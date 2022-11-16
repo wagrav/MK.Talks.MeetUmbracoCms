@@ -1,0 +1,46 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.IPageBase>
+@using ContentModels = MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent;
+
+<ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    @{
+        var homepage = Umbraco.ContentAtRoot().First();
+        var pages = homepage.Children;
+        var reportLists = pages.Where(p => p is ContentModels.ReportList);
+        var thisPageContentModel = Model as PublishedContentModel;
+    }
+
+    <li class="menu-item">
+        <a href="@homepage.Url()" class="menu-link">
+            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <div data-i18n="Analytics">@homepage.Name</div>
+        </a>
+    </li>
+
+    @if (reportLists.Any())
+    {
+        var open = Model is ContentModels.ReportList or ContentModels.ReportPage ? "active open" : "";
+        <li class="menu-item @open">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bxs-report"></i>
+                <div data-i18n="Layouts">My Reports</div>
+            </a>
+
+            <ul class="menu-sub">
+                @foreach (var page in pages.Where(p => p is ContentModels.ReportList))
+                {
+                    var active = Model.Key == page.Key ? "active" : "";
+                    var url = page.Url();
+                    var name = page.Name;
+
+                    <li class="menu-item @active">
+                        <a href="@url" class="menu-link">
+                            <div data-i18n="@name">@name</div>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+</ul>

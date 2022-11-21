@@ -1,0 +1,30 @@
+﻿@using Umbraco.Cms.Web.Common.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<LoginModel>
+
+@using (Html.BeginUmbracoForm("Login", "AccountSurface", FormMethod.Post, new { @class = "mb-3" }))
+{
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email or username</label>
+        <input asp-for="@Model.Username" class="form-control" id="email" placeholder="Enter your email or username" autocomplete="on" data-sb-validations="required,email" />
+        <span asp-validation-for="@Model.Username" class="text-danger"></span>
+    </div>
+    <div class="mb-3 form-password-toggle">
+        <label for="Password" class="form-label">Password</label>
+        <input asp-for="@Model.Password" class="form-control" type="password" id="password" placeholder="**********" autocomplete="on" data-sb-validations="required" />
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <div class="form-check">
+            <input type="checkbox" asp-for="@Model.RememberMe" class="form-check-input">
+        <label for="RememberMe" class="form-check-label">Remember Me</label>
+        </div>
+    </div>
+    <br />
+
+    <div class="mb-3">
+        @Html.ValidationSummary()
+
+        <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+    </div>
+}

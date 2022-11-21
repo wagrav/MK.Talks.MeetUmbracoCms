@@ -1,6 +1,16 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Homepage>
 @using ContentModels = MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent;
+@using Umbraco.Cms.Core.Security
+
+@inject IMemberManager memberManager
+
 @{
-	Layout = "_Layout.Fluid.cshtml";
+    Layout = "_Layout.Fluid.cshtml";
+
+    var member = await memberManager.GetCurrentMemberAsync();
+
+    var memberName = member is not null ? member.Name : "unknown";
 }
+
+<h1>Welcome @memberName!</h1>

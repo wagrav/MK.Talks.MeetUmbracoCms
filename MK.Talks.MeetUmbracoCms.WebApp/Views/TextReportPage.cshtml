@@ -2,5 +2,22 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.TextReportPage>
 @using ContentModels = MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent;
 @{
-	Layout = null;
+    Layout = "_Layout.Fluid.cshtml";
+    var reportList = Model.Parent as ContentModels.ReportList;
 }
+
+<h4 class="fw-bold py-3 mb-2">
+    <span class="text-muted fw-light cursor-pointer" onclick="window.location.href = '@reportList!.Url()'">@reportList!.Name / </span> @Model.Name
+</h4>
+
+<span class="badge bg-label-dark">Power BI</span>
+<p class="my-3">@Model.ReportShortDescription</p>
+
+
+<div class="card">
+    <div class="card-body">
+        @Model.ReportContent
+    </div>
+</div>
+
+<p class="my-3">@Model.ReportFullDescription</p>

@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 {
-	/// <summary>Report List Page</summary>
-	[PublishedModel("reportList")]
-	public partial class ReportList : PublishedContentModel, IPageBase
+	/// <summary>Power BI Report Page</summary>
+	[PublishedModel("powerBIReportPage")]
+	public partial class PowerBireportPage : ReportPage
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		public new const string ModelTypeAlias = "reportList";
+		public new const string ModelTypeAlias = "powerBIReportPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
@@ -34,14 +34,14 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<ReportList, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<PowerBireportPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public ReportList(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public PowerBireportPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,19 +50,11 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 		// properties
 
 		///<summary>
-		/// Page Meta Description: Provide a custom page meta description. If empty a default  meta description will be used instead.
+		/// Power BI Embedded Report Url
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageMetaDescription")]
-		public virtual string PageMetaDescription => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.PageBase.GetPageMetaDescription(this, _publishedValueFallback);
-
-		///<summary>
-		/// Page Meta Title: Provide a custom page meta title. If empty a content name will be used instead.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageMetaTitle")]
-		public virtual string PageMetaTitle => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.PageBase.GetPageMetaTitle(this, _publishedValueFallback);
+		[ImplementPropertyType("powerBIEmbeddedReportUrl")]
+		public virtual string PowerBiembeddedReportUrl => this.Value<string>(_publishedValueFallback, "powerBIEmbeddedReportUrl");
 	}
 }

@@ -2,5 +2,26 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ReportPage>
 @using ContentModels = MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent;
 @{
-	Layout = null;
+    Layout = "_Layout.Fluid.cshtml";
+    var reportList = Model.Parent as ContentModels.ReportList;
 }
+
+<h4 class="fw-bold py-3 mb-2">
+    <span class="text-muted fw-light cursor-pointer" onclick="window.location.href = '@reportList.Url()'">@reportList.Name / </span> @Model.Name
+</h4>
+
+@* <h3 class="pb-1 mb-2 ">@reportList.Name / @Model.Name</h3> *@
+<span class="badge bg-label-dark">Excel report</span>
+<p class="my-3">@Model.ReportShortDescription</p>
+
+<iframe referrerpolicy="no-referrer-when-downgrade" width="1200" height="720" frameborder="0" src="https://app.powerbi.com/view?r=eyJrIjoiMDM0YjE3MmYtMTgxMS00YWRlLTk1MmEtNjg1YzY3M2QxY2NkIiwidCI6IjEzNDA0ODkzLTQwODEtNDNjYi05Y2Y3LTI2YTlkZDkzN2YwMiIsImMiOjl9" title="iframe"></iframe>
+
+<p class="my-3">@Model.ReportFullDescription</p>
+
+
+@* *@
+@* <div class="card"> *@
+@*     <div class="card-body"> *@
+@*         <iframe referrerpolicy="no-referrer-when-downgrade" width="1200" height="720" frameborder="0" src="https://app.powerbi.com/view?r=eyJrIjoiMDM0YjE3MmYtMTgxMS00YWRlLTk1MmEtNjg1YzY3M2QxY2NkIiwidCI6IjEzNDA0ODkzLTQwODEtNDNjYi05Y2Y3LTI2YTlkZDkzN2YwMiIsImMiOjl9" title="iframe"></iframe> *@
+@*     </div> *@
+@* </div> *@

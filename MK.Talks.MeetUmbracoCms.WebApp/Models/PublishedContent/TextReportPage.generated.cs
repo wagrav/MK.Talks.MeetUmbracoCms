@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 {
-	/// <summary>Report List Page</summary>
-	[PublishedModel("reportList")]
-	public partial class ReportList : PublishedContentModel, IPageBase
+	/// <summary>Text Report Page</summary>
+	[PublishedModel("textReportPage")]
+	public partial class TextReportPage : ReportPage
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		public new const string ModelTypeAlias = "reportList";
+		public new const string ModelTypeAlias = "textReportPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
@@ -34,14 +34,14 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<ReportList, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<TextReportPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public ReportList(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public TextReportPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,19 +50,11 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 		// properties
 
 		///<summary>
-		/// Page Meta Description: Provide a custom page meta description. If empty a default  meta description will be used instead.
+		/// Report Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageMetaDescription")]
-		public virtual string PageMetaDescription => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.PageBase.GetPageMetaDescription(this, _publishedValueFallback);
-
-		///<summary>
-		/// Page Meta Title: Provide a custom page meta title. If empty a content name will be used instead.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageMetaTitle")]
-		public virtual string PageMetaTitle => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.PageBase.GetPageMetaTitle(this, _publishedValueFallback);
+		[ImplementPropertyType("reportContent")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ReportContent => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "reportContent");
 	}
 }

@@ -8,10 +8,11 @@
         var homepage = Umbraco.ContentAtRoot().First();
         var pages = homepage.Children;
         var reportLists = pages.Where(p => p is ContentModels.ReportList);
-        var thisPageContentModel = Model as PublishedContentModel;
+        var pageContentModel = Model as PublishedContentModel;
+        var homepageCssClasses = Model.Key == homepage.Key ? "active" : "";  
     }
 
-    <li class="menu-item">
+    <li class="menu-item @homepageCssClasses">
         <a href="@homepage.Url()" class="menu-link">
             <i class="menu-icon tf-icons bx bx-home-circle"></i>
             <div data-i18n="Analytics">@homepage.Name</div>
@@ -30,7 +31,7 @@
             <ul class="menu-sub">
                 @foreach (var page in pages.Where(p => p is ContentModels.ReportList))
                 {
-                    var active = Model.Key == page.Key ? "active" : "";
+                    var active = Model.Key == page.Key ? "active" : Model is ContentModels.ReportPage && page.Key == pageContentModel.Parent.Key ? "active" : "";
                     var url = page.Url();
                     var name = page.Name;
 

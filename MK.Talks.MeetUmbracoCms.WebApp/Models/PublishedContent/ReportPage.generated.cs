@@ -18,9 +18,9 @@ using Umbraco.Extensions;
 
 namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 {
-	/// <summary>Report Page</summary>
+	/// <summary>Report Page - Base</summary>
 	[PublishedModel("reportPage")]
-	public partial class ReportPage : PublishedContentModel, IPageBase
+	public partial class ReportPage : PublishedContentModel, IPageBase, IReport
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -50,22 +50,6 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 		// properties
 
 		///<summary>
-		/// Report Description
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("reportDescription")]
-		public virtual string ReportDescription => this.Value<string>(_publishedValueFallback, "reportDescription");
-
-		///<summary>
-		/// Report Name
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("reportName")]
-		public virtual string ReportName => this.Value<string>(_publishedValueFallback, "reportName");
-
-		///<summary>
 		/// Page Meta Description: Provide a custom page meta description. If empty a default  meta description will be used instead.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
@@ -80,5 +64,29 @@ namespace MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageMetaTitle")]
 		public virtual string PageMetaTitle => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.PageBase.GetPageMetaTitle(this, _publishedValueFallback);
+
+		///<summary>
+		/// Report Full Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("reportFullDescription")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString ReportFullDescription => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.Report.GetReportFullDescription(this, _publishedValueFallback);
+
+		///<summary>
+		/// Report Name
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("reportName")]
+		public virtual string ReportName => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.Report.GetReportName(this, _publishedValueFallback);
+
+		///<summary>
+		/// Report Short Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "10.3.2+e7fae14")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("reportShortDescription")]
+		public virtual string ReportShortDescription => global::MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent.Report.GetReportShortDescription(this, _publishedValueFallback);
 	}
 }

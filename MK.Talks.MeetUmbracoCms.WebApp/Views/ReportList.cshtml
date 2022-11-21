@@ -1,6 +1,44 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ReportList>
 @using ContentModels = MK.Talks.MeetUmbracoCms.WebApp.Models.PublishedContent;
+@using System.Diagnostics
 @{
-	Layout = "_Layout.Fluid.cshtml";
+    Layout = "_Layout.Fluid.cshtml";
+
+    var reports = Model.Children.Cast<ContentModels.ReportPage>().ToList();
 }
+
+
+<!-- Grid Card -->
+<h4 class="pb-1 mb-4 text-muted">@Model.Name</h4>
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+    @foreach (var reportPage in reports)
+    {
+        var name = reportPage!.ReportName;
+        var description = reportPage.ReportShortDescription;
+        var reportTypeLabel = reportPage switch
+        {
+            ContentModels.PowerBireportPage => "Power BI",
+            ContentModels.TextReportPage => "Text Report",
+            _ => ""
+            };
+
+        <div class="col">
+            <div class="card h-100 cursor-pointer" onclick="window.location.href = '@reportPage.Url()'">
+                <div class="card-body">
+                    <h5 class="card-title">@name</h5>
+
+                    @if (string.IsNullOrWhiteSpace(reportTypeLabel) == false)
+                    {
+                        <div class="card-subtitle text-muted mb-3">@reportTypeLabel</div>
+                    }
+                    
+                    <p class="card-text">
+                        @description
+                    </p>
+                    <a href="@reportPage.Url()" class="card-link">Go to report</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
